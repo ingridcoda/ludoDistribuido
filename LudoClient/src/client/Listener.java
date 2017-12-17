@@ -39,11 +39,11 @@ public class Listener extends Observable implements Runnable {
 						this.setChanged();
 						this.notifyObservers(message);
 					} else if(message.contains("entrou")) {
-						if(ConnectController.getInstance().getMyTeam().equals(" ")) {
-							String[] aux = message.split(" ");
+						String[] aux = message.split(" ");
+						if(ConnectController.getInstance().getMyTeam().equals(" ")) {							
 							ConnectController.getInstance().setMyTeam(aux[3]);
 						}
-						GameFacade.getInstance().waitingPlayers();
+						GameFacade.getInstance().waitingPlayers(aux[3]);
 						this.setChanged();
 						this.notifyObservers(message);
 					} else if(message.contains("azul")){

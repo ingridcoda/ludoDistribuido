@@ -134,9 +134,9 @@ public class GameFacade extends Observable implements Observer, ObservadoIF, Obs
 		this.connectWindow.setVisible(true);
 	}
 
-	public void waitingPlayers() {
+	public void waitingPlayers(String color) {
 		if(this.waitingPlayersWindow == null) {
-			this.waitingPlayersWindow = new WaitingPlayersFrame();
+			this.waitingPlayersWindow = new WaitingPlayersFrame(color);
 			this.connectWindow.dispose();
 			this.connectWindow = null;
 			this.waitingPlayersWindow.setVisible(true);

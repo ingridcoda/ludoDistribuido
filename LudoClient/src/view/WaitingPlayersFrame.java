@@ -22,7 +22,7 @@ public class WaitingPlayersFrame extends JFrame {
 	private JLabel label;
 	private String name;
 
-	public WaitingPlayersFrame() 
+	public WaitingPlayersFrame(String color) 
 	{
 		this.tk = Toolkit.getDefaultToolkit();
 		Dimension dim = tk.getScreenSize();
@@ -35,17 +35,29 @@ public class WaitingPlayersFrame extends JFrame {
 		this.waitingPlayersPanel = new JPanel();
 		this.waitingPlayersPanel.setLayout(null);
 		this.waitingPlayersPanel.setSize(this.dimension);
-		this.waitingPlayersPanel.setBackground(Color.WHITE);
-
+		
+		switch(color) {
+		case "vermelho":
+			this.waitingPlayersPanel.setBackground(new Color(220,20,60));
+			break;
+		case "verde":
+			this.waitingPlayersPanel.setBackground(new Color (60,179,113));
+			break;
+		case "amarelo":
+			this.waitingPlayersPanel.setBackground(new Color(255,215,0));
+			break;
+		case "azul":
+			this.waitingPlayersPanel.setBackground(new Color(100,149,237));
+			break;
+		}
+		
 		this.name = ConnectController.getInstance().getNickname();
-
-		String myTeam = "";
-		if(ConnectController.getInstance().getMyTeam() != null) myTeam = ConnectController.getInstance().getMyTeam();		
-		this.label = new JLabel("Jogador(a) " + this.name + ", seu time é " + myTeam + ". Aguardando adversários...");		
+	
+		this.label = new JLabel("Jogador(a) " + this.name + ", seu time é " + color + ". Aguardando adversários...");		
 		this.label.setLocation(0, this.dimension.height / 5);
 		this.label.setSize(this.dimension.width, 40);
 		this.label.setOpaque(false);
-		this.label.setFont(new Font("Helvetica", 0, 16));
+		this.label.setFont(new Font("Helvetica", 0, 30));
 		this.label.setHorizontalAlignment(SwingConstants.CENTER);
 		this.waitingPlayersPanel.add(this.label);
 
